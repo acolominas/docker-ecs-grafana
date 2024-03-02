@@ -39,7 +39,7 @@
             "secrets": [
               {
                 "name": "GF_SECURITY_ADMIN_PASSWORD__FILE",
-                "valueFrom": "arn:aws:secretsmanager:eu-west-1:224322756201:secret:aci-smsecrt-grafana-dev-euw1-admin-FhLzOy"
+                "valueFrom": "arn:aws:secretsmanager:eu-west-1:224322756201:secret:aci-smsecrt-grafana-dev-euw1-admin-9w8BdD"
               }
             ]
         }
