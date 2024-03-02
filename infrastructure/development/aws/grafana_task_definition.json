@@ -25,6 +25,14 @@
               }
             ],
             "volumesFrom": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/aws/ecs/aci-ecsserv-grafana-dev-euw1-01",
+                    "awslogs-region": "eu-west-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
             "environment": [
               { "name" : "JAVA_OPTS", "value" : "-Djenkins.install.runSetupWizard=false" }
             ],
