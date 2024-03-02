@@ -9,7 +9,7 @@
     "containerDefinitions": [
         {
             "name": "grafana",
-            "image": "grafana",
+            "image": "grafana/grafana:latest",
             "portMappings": [
                 {
                     "containerPort": 3000,
