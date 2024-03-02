@@ -1,0 +1,52 @@
+{
+    "family": "aci-ecstsk-grafana-dev-euw1-01",
+    "taskRoleArn": "arn:aws:iam::224322756201:role/aci-iamrole-grafana-dev-euw1-01",
+    "executionRoleArn": "arn:aws:iam::224322756201:role/aci-iamrole-grafana-dev-euw1-01",
+    "requiresCompatibilities" : ["FARGATE"],
+    "networkMode"             : "awsvpc",
+    "cpu"                      : "2048",
+    "memory"                   : "4096",
+    "containerDefinitions": [
+        {
+            "name": "grafana",
+            "image": "grafana",
+            "portMappings": [
+                {
+                    "containerPort": 3000,
+                    "hostPort": 3000,
+                    "protocol": "tcp"
+                }
+            ],
+            "essential": true,
+            "mountPoints": [
+              {
+                "containerPath": "/var/lib/grafana",
+                "sourceVolume": "grafana-efs"
+              }
+            ],
+            "volumesFrom": [],
+            "environment": [
+              { "name" : "JAVA_OPTS", "value" : "-Djenkins.install.runSetupWizard=false" }
+            ],
+            "secrets": [
+              {
+                "name": "GF_SECURITY_ADMIN_PASSWORD__FILE",
+                "valueFrom": "arn:aws:secretsmanager:eu-west-1:224322756201:secret:aci-smsecrt-grafana-dev-euw1-admin-FhLzOy"
+              }
+            ]
+        }
+    ],
+    "volumes": [
+      {
+        "name" : "grafana-efs",
+        "efsVolumeConfiguration": {
+          "fileSystemId": "fs-00ec14203744ebaf9",
+          "transitEncryption": "ENABLED",
+          "authorizationConfig": {
+            "accessPointId": "fsap-052f6ec8fb62f63f8",
+            "iam": "ENABLED"
+          }
+        }
+     }
+   ]
+}
