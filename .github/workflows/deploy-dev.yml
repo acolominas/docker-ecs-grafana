@@ -33,6 +33,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1.2.0
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
+          container-name: ${{ env.CONTAINER_NAME }}
           log-configuration-log-driver: awslogs
           log-configuration-options: |
             awslogs-group=/aws/ecs/aci-ecsserv-grafana-dev-euw1-01
